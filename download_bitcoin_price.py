@@ -3,10 +3,10 @@ import pandas as pd
 import os
 
 # Define the ticker symbol for Bitcoin
-ticker_symbol = 'BTC-USD'
+ticker_symbol = 'ETH-USD'
 
 # Define the start and end dates
-start_date = '2021-01-01'
+start_date = '2018-01-01'
 end_date = '2024-12-31'
 
 # Download the hourly price data
@@ -18,7 +18,7 @@ if not os.path.exists(folder_name):
     os.makedirs(folder_name)
 
 # Define the file name and path
-file_name = 'Bitcoin_Daily_from_2021.csv'
+file_name = 'Eth_Daily_from_2018.csv'
 file_path = os.path.join(folder_name, file_name)
 
 # Save the data to the CSV file in the 'datasets' folder
