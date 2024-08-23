@@ -49,8 +49,8 @@ def LSTM(train,n : int, number_nodes, learning_rate, epochs, batch_size):
    model = tf.keras.Sequential([
       tf.keras.layers.Input((n,1)),
       tf.keras.layers.LSTM(number_nodes,input_shape=(n, 1)),
-      tf.keras.layers.Dense(units = number_nodes,activation = "relu"),
-      tf.keras.layers.Dense(units = number_nodes,activation = "relu"),
+      # tf.keras.layers.Dense(units = number_nodes,activation = "relu"),
+      # tf.keras.layers.Dense(units = number_nodes,activation = "relu"),
       tf.keras.layers.Dense(1)
    ])
    model.compile(loss = 'mse',optimizer = tf.keras.optimizers.Adam(learning_rate),metrics = ["mean_absolute_error"])
@@ -106,7 +106,7 @@ def plot_train_test(train, test):
     plt.xlabel('Date')
     plt.ylabel('Close Price')
     address = Output_address + 'plot_train_test' + ".jpg"
-    plt.savefig(address)
+    plt.show()
 
 def plot_predictions(train, predictions,title):
     plt.figure(figsize=(10,5))
@@ -117,7 +117,7 @@ def plot_predictions(train, predictions,title):
     plt.ylabel('Close-Price')
     address = Output_address + title + ".jpg"
     address = Output_address + 'plot_predictions' + ".jpg"
-    plt.savefig(address)
+    plt.show()
 
 def plot_performance(history):
    plt.plot(history.history['loss'])
@@ -125,7 +125,7 @@ def plot_performance(history):
    plt.xlabel('Epoch')
    plt.ylabel('Loss')
    address = Output_address + 'plot_performance' + ".jpg"
-   plt.savefig(address)
+   plt.show()
 
 def plot_final_predictions(test, final_predictions):
     plt.figure(figsize=(10,5))
@@ -136,7 +136,7 @@ def plot_final_predictions(test, final_predictions):
     plt.ylabel('Close Price')
     plt.legend()
     address = Output_address + 'Final Predictions with Error Correction' + ".jpg"
-    plt.savefig(address)
+    plt.show()
 
 def plot_arima_accuracy(mse, rmse, mae):
     metrics = ['MSE', 'RMSE', 'MAE']
@@ -145,7 +145,7 @@ def plot_arima_accuracy(mse, rmse, mae):
     plt.bar(metrics, values, color=['blue', 'orange', 'green'])
     plt.title('ARIMA Model Accuracy Metrics')
     address = Output_address + 'Model Accuracy Metrics' + ".jpg"
-    plt.savefig(address)
+    plt.show()
 
 def main():
    days = 12
@@ -157,7 +157,7 @@ def main():
    train,test = data[close].iloc[0:train_len_val],data[close].iloc[train_len_val:]
 
    # Single Batch Training and Prediction
-   model, history, full_predictions = LSTM(train, days, 32, 0.001, 15, 32)
+   model, history, full_predictions = LSTM(train, days, 50, 0.001, 25, 5)
    plot_predictions(train[days:], full_predictions,"LSTM PREDICTIONS VS ACTUAL Values For TRAIN Data Set")
    plot_performance(history)
 

@@ -6,8 +6,8 @@ import os
 ticker_symbol = 'ETH-USD'
 
 # Define the start and end dates
-start_date = '2018-01-01'
-end_date = '2024-12-31'
+start_date = '2023-06-01'
+end_date = '2023-12-31'
 
 # Download the hourly price data
 btc_data = yf.download(ticker_symbol, start=start_date, end=end_date, interval='1d')
@@ -18,7 +18,7 @@ if not os.path.exists(folder_name):
     os.makedirs(folder_name)
 
 # Define the file name and path
-file_name = 'Eth_Daily_from_2018.csv'
+file_name = 'Eth_Daily_from_2023_S2.csv'
 file_path = os.path.join(folder_name, file_name)
 
 # Save the data to the CSV file in the 'datasets' folder
